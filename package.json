@@ -42,7 +42,7 @@
     "@angular/build": "^21.1.2",
     "@angular/cli": "^21.1.2",
     "@angular/compiler-cli": "^21.1.2",
-    "@tailwindcss/postcss": "^latest-version",
+    "@tailwindcss/postcss": "^4.1.18",
     "@types/aos": "^3.0.7",
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
