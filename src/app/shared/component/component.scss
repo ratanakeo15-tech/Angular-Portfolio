@@ -1,7 +1,25 @@
-.clamp {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+/* 1 line */
+.clamp-1 {
+   display: -webkit-box;
+  -webkit-line-clamp: var(--lines, 1);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
+/* multi-line */
+.clamp-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: var(--lines, 2);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.text-style{
+    border-bottom: 1px solid #0d41e1;
+    padding: 1px;
+    color: #0d41e1;
+}
+.text-style:hover{
+    border-bottom: 1px solid #fb3640;
+    padding: 1px;
+    color: #fb3640;
+}

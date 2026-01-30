@@ -1,9 +1,8 @@
 
-<div class="container mx-auto max-w-6xl p-4">
+<div id="my-experience" class="container flex flex-col items-center justify-center mx-auto max-w-6xl p-4 overflow-hidden transition-[max-height] duration-300">
     <h3 class="text-gray-800 py-6 text-3xl text-center font-bold">Other Achivement</h3>
     <div class="md:columns-2 lg:columns-3 gap-6 p-4 sm:p-1 mt-2">
-
-        @for (item of ouputData(); track $index) {
+        @for (item of visibleCards; track $index) {
             <div class="animate-in zoom-in duration-200">
                 <div class="ring-1 rounded-lg flex flex-col space-y-2 p-4 break-inside-avoid mb-6 bg-white hover:ring-2 ring-gray-300 hover:ring-sky-400 transform duration-200 hover:shadow-sky-200 hover:shadow-md z-0 relative">
                     <div class="flex flex-col break-inside-avoid-page z-0 relative">
@@ -13,7 +12,7 @@
                                     
                                     <div>
                                         <h1 class="font-semibold">
-                                            <app-component [text]="item?.tittle" variant="title"></app-component>
+                                            <app-component [text]="item.tittle" variant="title" ></app-component>
                                             <!-- {{item.tittle}} -->
                                         </h1>
                                         
@@ -23,11 +22,20 @@
                         </div>
                         
                         <div class="mt-5">
-                            <app-component [text]="item?.text" variant="body" [lines]="2"></app-component>
+                            <app-component [text]="item.text" variant="body" [lines]="2"></app-component>
                         </div>
                     </div>
                 </div>
             </div>
         }
     </div>
+    @if (ouputData().length > initialVisible) {
+        <button
+            mat-button
+            class=" mt-4 px-4 py-2 border rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition"
+            (click)="showAll.set(!showAll())"
+        >
+            {{ showAll() ? 'Show less ↑' : 'Show all ↓' }}
+        </button>
+    }
 </div>

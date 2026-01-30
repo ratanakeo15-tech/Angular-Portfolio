@@ -1,37 +1,24 @@
-<!-- Title -->
-@if (variant === 'title') {
-  <div class="relative">
-    <h3 [class.clamp]="!expanded" class="font-bold text-xl">
-      {{ text ?? '' }}
-    </h3>
-
-    @if ((text?.length ?? 0) > maxLength) {
-      <button
-        mat-button
-        class="absolute right-0 bottom-0"
-        (click)="expanded = !expanded"
-      >
-        {{ expanded ? 'See less' : 'See more' }}
-      </button>
-    }
-  </div>
+@if (isTitle) {
+  <h3
+    class="font-bold text-xl"
+    [class.clamp-1]="!expanded"
+  >
+    {{ text }}
+  </h3>
 }
 
-<!-- Body text -->
-@if (variant === 'body') {
-  <div class="relative">
-    <p [class.clamp]="!expanded" class="text-base text-gray-800">
-      {{ text ?? '' }}
-    </p>
+@if (!isTitle) {
+  <p
+    class="clamp-lines"
+    [style.--lines]="collapsedLines"
+    [class.clamp-lines]="!expanded"
+  >
+    {{ text }}
+  </p> 
+}
 
-    @if ((text?.length ?? 0) > maxLength) {
-      <button
-        mat-button
-        class="absolute right-0 bottom-0"
-        (click)="expanded = !expanded"
-      >
-        {{ expanded ? 'See less' : 'See more' }}
-      </button>
-    }
-  </div>
+@if (showToggle) {
+  <button mat-button (click)="expanded = !expanded" class="text-style">
+    {{ expanded ? 'See less' : 'See more' }}
+  </button>
 }

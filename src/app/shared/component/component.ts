@@ -8,12 +8,22 @@ import { Component, Input } from '@angular/core';
 })
 
 export class Componentshare {
-  @Input() text :string | undefined;
-  @Input() lines = 2;
+  @Input() text = '';
   @Input() variant: 'title' | 'body' = 'body';
+  @Input() lines = 2;
 
   expanded = false;
-  get maxLength() {
-    return this.lines * 50; // rough estimate
+
+  get isTitle() {
+    return this.variant === 'title';
   }
+
+  get collapsedLines() {
+    return this.isTitle ? 1 : this.lines;
+  }
+
+  get showToggle() {
+    return this.text.length > this.collapsedLines * 2;
+  }
+
 }
